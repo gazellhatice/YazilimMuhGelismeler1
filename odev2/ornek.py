@@ -50,11 +50,25 @@ class Name(Resource):
                 return {'data' : entry}, 207
         return {'message' : 'No entry found with this name !'}, 405
 
+# Yeni bir endpoint: Toplama işlevi için
+class Sum(Resource):
+    def get(self):
+        # İki sayıyı sorgu parametrelerinden alıyoruz
+        parser = reqparse.RequestParser()
+        parser.add_argument('a', type=float, required=True, help="İlk sayı ('a') gereklidir")
+        parser.add_argument('b', type=float, required=True, help="İkinci sayı ('b') gereklidir")
+        
+        args = parser.parse_args()
+        result = args['a'] + args['b']
+        
+        return {'result': result}, 200
+
 
 # Add URL endpoints
 api.add_resource(Users, '/users')
 api.add_resource(Cities, '/cities')
 api.add_resource(Name, '/<string:name>')
+api.add_resource(Sum, '/sum')  # Yeni eklenen toplama endpointi
 
 
 if __name__ == '__main__':
