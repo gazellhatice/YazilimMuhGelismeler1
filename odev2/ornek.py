@@ -50,12 +50,18 @@ class Name(Resource):
                 return {'data' : entry}, 207
         return {'message' : 'No entry found with this name !'}, 405
 
-# CSV dosyasından yaşların toplamını alan endpoint
+# Yeni bir endpoint: Toplama işlevi için
 class Sum(Resource):
     def get(self):
-        data = pd.read_csv('kullanicilar.csv')
-        total_age = data['age'].sum()
-        return {'total_age': total_age}, 200
+        # İki sayıyı sorgu parametrelerinden alıyoruz
+        parser = reqparse.RequestParser()
+        parser.add_argument('a', type=float, required=True, help="İlk sayı ('a') gereklidir")
+        parser.add_argument('b', type=float, required=True, help="İkinci sayı ('b') gereklidir")
+        
+        args = parser.parse_args()
+        result = args['a'] + args['b']
+        
+        return {'result': result}, 200
 
 # CSV dosyasından yaşların çarpımını alan endpoint
 class Multiply(Resource):
