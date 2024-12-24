@@ -1,0 +1,14 @@
+Source: flask-app
+Section: python
+Priority: optional
+Maintainer: Your Name <your-email@example.com>
+Build-Depends: debhelper (>= 9), python3-all
+Standards-Version: 4.5.0
+Homepage: https://your-project-homepage.example.com
+
+Package: flask-app
+Architecture: all
+Depends: ${misc:Depends}, ${python3:Depends}
+Description: A simple Flask application
+ A simple Flask application example.
+

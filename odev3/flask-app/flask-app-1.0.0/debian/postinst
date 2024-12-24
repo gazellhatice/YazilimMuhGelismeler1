@@ -1,0 +1,8 @@
+#!/bin/bash
+# Paket kurulduğunda yapılacak işlemler
+
+# systemd servisini yeniden yükleyin
+systemctl daemon-reload
+
+# Flask servisini başlatın
+systemctl start my_flask_app

@@ -1,0 +1,5 @@
+#!/bin/bash
+# Paket kaldırıldığında yapılacak işlemler
+
+# Flask servisini durdurun
+systemctl stop my_flask_app

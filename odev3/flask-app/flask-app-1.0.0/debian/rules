@@ -1,0 +1,10 @@
+#!/usr/bin/make -f
+# Sample debian/rules file
+# Define default target to build and clean package
+
+# Include debhelper utility functions
+%:
+    dh $@ --with python3
+
+clean:
+    dh clean
